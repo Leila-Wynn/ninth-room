@@ -122,7 +122,7 @@ img {
 }
 
 /* =========================================================
-   FIG
+   FIG — NOW WITH A BLACK CARTOON OUTLINE
 ========================================================= */
 
 .fig {
@@ -141,6 +141,16 @@ img {
   z-index: 20;
 
   transition: transform 0.14s ease;
+
+  filter:
+    drop-shadow(0 5px 0 #111)
+    drop-shadow(0 -5px 0 #111)
+    drop-shadow(5px 0 0 #111)
+    drop-shadow(-5px 0 0 #111)
+    drop-shadow(4px 4px 0 #111)
+    drop-shadow(-4px 4px 0 #111)
+    drop-shadow(4px -4px 0 #111)
+    drop-shadow(-4px -4px 0 #111);
 }
 
 .fig:hover {
@@ -903,8 +913,6 @@ img {
   color: var(--green);
 }
 
-/* mobile safety */
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1115,8 +1123,6 @@ img {
       aria-label="Fig's Pixel Panic running game"
     ></canvas>
 
-    <!-- START -->
-
     <div class="start-screen" id="panic-start">
 
       <h2>READY?</h2>
@@ -1136,8 +1142,6 @@ img {
       </button>
 
     </div>
-
-    <!-- QUIZ -->
 
     <div
       class="quiz-card"
@@ -1181,8 +1185,6 @@ img {
       ></div>
 
     </div>
-
-    <!-- END -->
 
     <div
       class="result-screen"
@@ -1486,6 +1488,7 @@ function makeTrimmedVersion(url) {
 
               0,
               0,
+
               cropped.width,
               cropped.height
             );
@@ -2338,8 +2341,6 @@ const panicComment =
 let quizTimer = null;
 let quizDeadline = 0;
 
-/* HUD */
-
 function updateHUD() {
 
   let hearts = "";
@@ -2362,8 +2363,6 @@ function updateHUD() {
   scoreEl.textContent =
     game.score;
 }
-
-/* START */
 
 function startPanic() {
 
@@ -2406,8 +2405,6 @@ document.getElementById(
   "click",
   startPanic
 );
-
-/* QUESTION */
 
 function showQuestion() {
 
@@ -2505,8 +2502,6 @@ function updateQuizTimer() {
   }
 }
 
-/* ANSWER */
-
 function answerQuestion(index) {
 
   if (
@@ -2585,8 +2580,6 @@ function showFlash(text) {
   );
 }
 
-/* NEXT QUESTION */
-
 function advanceGame() {
 
   game.question++;
@@ -2608,8 +2601,6 @@ function advanceGame() {
   game.phase =
     "approach";
 }
-
-/* FINISH */
 
 function finishPanic() {
 
@@ -2677,10 +2668,6 @@ function finishPanic() {
   }
 }
 
-/* =========================================================
-   PIXEL ART DRAWING
-========================================================= */
-
 function pixelRect(
   x,
   y,
@@ -2699,8 +2686,6 @@ function pixelRect(
     h
   );
 }
-
-/* FIG SPRITE */
 
 function drawPixelFig(
   x,
@@ -2762,7 +2747,20 @@ function drawPixelFig(
     -54
   );
 
-  /* ears */
+  /* BLACK PIXEL OUTLINE */
+
+  pixelRect(13, -3, 30, 31, "#111");
+  pixelRect(66, -3, 30, 31, "#111");
+
+  pixelRect(3, 13, 104, 70, "#111");
+  pixelRect(-4, 28, 118, 46, "#111");
+
+  pixelRect(35, 72, 45, 47, "#111");
+
+  pixelRect(24, 79, 20, 32, "#111");
+  pixelRect(71, 79, 20, 32, "#111");
+
+  /* WHITE FIG */
 
   pixelRect(
     16,
@@ -2780,8 +2778,6 @@ function drawPixelFig(
     "#f4f0e8"
   );
 
-  /* head */
-
   pixelRect(
     8,
     17,
@@ -2797,8 +2793,6 @@ function drawPixelFig(
     38,
     "#f4f0e8"
   );
-
-  /* eyes */
 
   pixelRect(
     25,
@@ -2816,8 +2810,6 @@ function drawPixelFig(
     "#111"
   );
 
-  /* cheeks */
-
   pixelRect(
     18,
     58,
@@ -2834,8 +2826,6 @@ function drawPixelFig(
     "#efb9b6"
   );
 
-  /* nose */
-
   pixelRect(
     54,
     57,
@@ -2844,8 +2834,6 @@ function drawPixelFig(
     "#111"
   );
 
-  /* body */
-
   pixelRect(
     39,
     76,
@@ -2853,8 +2841,6 @@ function drawPixelFig(
     38,
     "#f4f0e8"
   );
-
-  /* arms */
 
   pixelRect(
     28,
@@ -2872,14 +2858,28 @@ function drawPixelFig(
     "#f4f0e8"
   );
 
-  /* running legs */
-
   const runFrame =
     Math.floor(
       time / 120
     ) % 2;
 
   if (runFrame === 0) {
+
+    pixelRect(
+      39,
+      106,
+      17,
+      18,
+      "#111"
+    );
+
+    pixelRect(
+      65,
+      104,
+      17,
+      21,
+      "#111"
+    );
 
     pixelRect(
       41,
@@ -2900,6 +2900,22 @@ function drawPixelFig(
   } else {
 
     pixelRect(
+      39,
+      103,
+      17,
+      22,
+      "#111"
+    );
+
+    pixelRect(
+      65,
+      107,
+      17,
+      17,
+      "#111"
+    );
+
+    pixelRect(
       41,
       105,
       13,
@@ -2918,8 +2934,6 @@ function drawPixelFig(
 
   ctx.restore();
 }
-
-/* OBSTACLES */
 
 function drawObstacle(
   type,
@@ -3025,8 +3039,6 @@ function drawObstacle(
     return;
   }
 
-  /* box */
-
   pixelRect(
     x,
     ground - 70,
@@ -3080,8 +3092,6 @@ function drawObstacle(
   ctx.stroke();
 }
 
-/* BACKGROUND */
-
 function drawGame(time) {
 
   ctx.clearRect(
@@ -3093,11 +3103,6 @@ function drawGame(time) {
 
   const ground =
     422;
-
-  /* little clouds */
-
-  ctx.fillStyle =
-    "#ded8c6";
 
   const cloudMove =
     (
@@ -3134,8 +3139,6 @@ function drawGame(time) {
     );
   }
 
-  /* floor */
-
   pixelRect(
     0,
     ground,
@@ -3143,8 +3146,6 @@ function drawGame(time) {
     7,
     "#111"
   );
-
-  /* moving ground marks */
 
   const groundMove =
     (
@@ -3190,10 +3191,6 @@ function drawGame(time) {
     );
   }
 }
-
-/* =========================================================
-   GAME LOOP
-========================================================= */
 
 function gameLoop(time) {
 
@@ -3274,8 +3271,6 @@ function gameLoop(time) {
 requestAnimationFrame(
   gameLoop
 );
-
-/* ESCAPE */
 
 window.addEventListener(
   "keydown",
