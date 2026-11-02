@@ -1,0 +1,1351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Ninth Room</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #f55a9e;
+  --blue: #3c77d5;
+  --yellow: #efff00;
+  --red: #a51920;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--pink);
+  font-family: Quicksand, Arial, sans-serif;
+}
+
+button { cursor: pointer; }
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* LOCKED ARTBOARDS */
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 56.0924vw;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.art {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1904px;
+  height: 1068px;
+  transform: scale(var(--scale, 1));
+  transform-origin: top left;
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+  font: 400 339px/1 "Bungee", Impact, sans-serif;
+  letter-spacing: -.06em;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* SECTION 1 — THE NINTH ROOM */
+
+#home { background: var(--pink); }
+
+#home .title { color: var(--yellow); }
+
+.home-first {
+  left: 24px;
+  top: -14px;
+}
+
+.home-second {
+  left: 36px;
+  top: 420px;
+}
+
+.home-fig {
+  position: absolute;
+  left: 770px;
+  top: 449px;
+  width: 540px;
+  height: 575px;
+  object-fit: contain;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.speech {
+  position: absolute;
+  left: 710px;
+  top: 291px;
+  max-width: 350px;
+  padding: 17px 22px;
+  border: 4px solid #111;
+  border-radius: 17px;
+  background: #fffdf1;
+  box-shadow: 7px 7px 0 #111;
+  font-size: 20px;
+  font-weight: 700;
+  z-index: 70;
+  display: none;
+}
+
+/* BASKETS */
+
+.basket {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.basket-image {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.inside {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 22px;
+}
+
+.obj {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  cursor: grab;
+  touch-action: none;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  transform-origin: center;
+}
+
+.obj:active { cursor: grabbing; }
+
+.obj:focus-visible {
+  outline: 3px dashed #111;
+  outline-offset: 2px;
+}
+
+/* PINK BASKET */
+
+.home-basket {
+  left: 1292px;
+  top: 179px;
+  width: 610px;
+  height: 862px;
+}
+
+.home-basket .basket-image {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.home-basket .inside {
+  left: 66px;
+  top: 135px;
+  width: 480px;
+  height: 612px;
+}
+
+.home-basket .cap {
+  left: 12px;
+  top: 17px;
+  width: 231px;
+  height: 139px;
+  transform: rotate(-8deg);
+  z-index: 8;
+}
+
+.home-basket .time {
+  left: 187px;
+  top: 25px;
+  width: 152px;
+  height: 153px;
+  transform: rotate(5deg);
+  z-index: 9;
+}
+
+.home-basket .phone {
+  left: 294px;
+  top: 20px;
+  width: 163px;
+  height: 172px;
+  transform: rotate(8deg);
+  z-index: 10;
+}
+
+.home-basket .drink {
+  left: 17px;
+  top: 165px;
+  width: 228px;
+  height: 220px;
+  transform: rotate(-6deg);
+  z-index: 7;
+}
+
+.home-basket .fish {
+  left: 18px;
+  top: 225px;
+  width: 231px;
+  height: 154px;
+  transform: rotate(-6deg);
+  z-index: 11;
+}
+
+.home-basket .flower {
+  left: 247px;
+  top: 188px;
+  width: 225px;
+  height: 215px;
+  transform: rotate(5deg);
+  z-index: 12;
+}
+
+.home-basket .hirono {
+  left: 197px;
+  top: 319px;
+  width: 116px;
+  height: 159px;
+  transform: rotate(3deg);
+  z-index: 14;
+}
+
+.home-basket .books {
+  left: 259px;
+  top: 323px;
+  width: 208px;
+  height: 194px;
+  transform: rotate(5deg);
+  z-index: 13;
+}
+
+.home-basket .unlucky {
+  left: 22px;
+  top: 373px;
+  width: 159px;
+  height: 127px;
+  transform: rotate(-6deg);
+  z-index: 15;
+}
+
+.home-basket .cash {
+  left: 53px;
+  top: 451px;
+  width: 109px;
+  height: 149px;
+  transform: rotate(-5deg);
+  z-index: 16;
+}
+
+.home-basket .soda {
+  left: 177px;
+  top: 441px;
+  width: 147px;
+  height: 158px;
+  transform: rotate(-5deg);
+  z-index: 17;
+}
+
+.home-basket .paint {
+  left: 350px;
+  top: 432px;
+  width: 100px;
+  height: 168px;
+  transform: rotate(4deg);
+  z-index: 18;
+}
+
+/* APPLE MENU */
+
+.apple {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  width: 78px;
+  height: 86px;
+  object-fit: contain;
+  z-index: 80;
+  cursor: pointer;
+}
+
+.apple-menu {
+  position: absolute;
+  left: 30px;
+  bottom: 106px;
+  padding: 17px 22px;
+  background: var(--yellow);
+  border: 4px solid #111;
+  box-shadow: 7px 7px 0 #111;
+  z-index: 81;
+  display: none;
+}
+
+.apple-menu a {
+  display: block;
+  font: 400 17px/1.5 "Bungee", Impact, sans-serif;
+  color: #111;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.apple-menu a:hover {
+  color: var(--red);
+}
+
+/* SECTION 2 — FIG'S WORLD */
+
+#world { background: var(--blue); }
+
+#world .title {
+  color: var(--red);
+  text-shadow: 13px 14px 0 rgba(63,45,100,.4);
+}
+
+.world-first {
+  left: 25px;
+  top: 174px;
+  font-size: 360px;
+}
+
+.world-second {
+  left: 25px;
+  top: 704px;
+  font-size: 356px;
+  transform-origin: top left;
+  z-index: 5;
+}
+
+.burst {
+  position: absolute;
+  pointer-events: none;
+  background: var(--yellow);
+  clip-path: polygon(
+    50% 0%, 57% 33%, 82% 4%, 70% 43%,
+    100% 28%, 75% 53%, 100% 73%,
+    67% 65%, 75% 100%, 50% 72%,
+    24% 100%, 32% 65%, 0% 76%,
+    25% 51%, 0% 26%, 36% 40%
+  );
+}
+
+.burst-one {
+  left: -82px;
+  top: 140px;
+  width: 264px;
+  height: 264px;
+  z-index: 1;
+}
+
+.burst-two {
+  left: 820px;
+  top: 542px;
+  width: 980px;
+  height: 770px;
+  z-index: 1;
+}
+
+.world-fig {
+  position: absolute;
+  left: 994px;
+  top: 493px;
+  width: 508px;
+  height: 573px;
+  object-fit: contain;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* NOTE */
+
+.note {
+  position: absolute;
+  left: 1306px;
+  top: 34px;
+  width: 558px;
+  height: 908px;
+  z-index: 4;
+}
+
+.note-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.note-writing {
+  position: absolute;
+  left: 105px;
+  top: 145px;
+  width: 380px;
+  height: 640px;
+  padding: 0 12px 4px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--red) transparent;
+  color: #241d19;
+  font: 600 21px/1.46 "Quicksand", Arial, sans-serif;
+}
+
+.note-writing p {
+  margin: 0 0 21px;
+}
+
+.note-writing h3 {
+  font: 400 29px/1.2 "Bungee", Impact, sans-serif;
+  color: var(--red);
+  margin: 0 0 20px;
+}
+
+.meet {
+  position: absolute;
+  left: 1450px;
+  top: 952px;
+  padding: 16px 23px;
+  background: var(--yellow);
+  border: 4px solid #111;
+  box-shadow: 7px 7px 0 #111;
+  font: 400 17px "Bungee", Impact, sans-serif;
+  color: #111;
+  z-index: 8;
+}
+
+/* SECTION 3 — LOST & FOUND */
+
+#lost { background: var(--yellow); }
+
+#lost .title {
+  color: #111;
+  font-size: 357px;
+}
+
+.lost-first {
+  left: 27px;
+  top: -5px;
+}
+
+.lost-second {
+  left: 27px;
+  top: 327px;
+}
+
+.lost-basket {
+  left: 996px;
+  top: 423px;
+  width: 908px;
+  height: 643px;
+}
+
+.lost-basket .basket-image {
+  left: 50%;
+  top: 50%;
+  width: 643px;
+  height: 908px;
+  object-fit: contain;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.lost-basket .inside {
+  left: 87px;
+  top: 103px;
+  width: 750px;
+  height: 507px;
+}
+
+.lost-basket .phone {
+  left: 29px;
+  top: 22px;
+  width: 224px;
+  height: 193px;
+  transform: rotate(-12deg);
+  z-index: 8;
+}
+
+.lost-basket .flower {
+  left: 217px;
+  top: 16px;
+  width: 239px;
+  height: 213px;
+  transform: rotate(7deg);
+  z-index: 9;
+}
+
+.lost-basket .books {
+  left: 429px;
+  top: 30px;
+  width: 255px;
+  height: 209px;
+  transform: rotate(8deg);
+  z-index: 10;
+}
+
+.lost-basket .paint {
+  left: 589px;
+  top: 40px;
+  width: 112px;
+  height: 184px;
+  transform: rotate(87deg);
+  z-index: 14;
+}
+
+.lost-basket .time {
+  left: 66px;
+  top: 171px;
+  width: 225px;
+  height: 201px;
+  transform: rotate(-5deg);
+  z-index: 11;
+}
+
+.lost-basket .drink {
+  left: 235px;
+  top: 189px;
+  width: 250px;
+  height: 228px;
+  transform: rotate(-7deg);
+  z-index: 6;
+}
+
+.lost-basket .fish {
+  left: 309px;
+  top: 265px;
+  width: 204px;
+  height: 191px;
+  transform: rotate(78deg);
+  z-index: 13;
+}
+
+.lost-basket .hirono {
+  left: 407px;
+  top: 202px;
+  width: 126px;
+  height: 160px;
+  transform: rotate(3deg);
+  z-index: 12;
+}
+
+.lost-basket .cap {
+  left: 42px;
+  top: 327px;
+  width: 235px;
+  height: 157px;
+  transform: rotate(-11deg);
+  z-index: 15;
+}
+
+.lost-basket .soda {
+  left: 525px;
+  top: 207px;
+  width: 178px;
+  height: 141px;
+  transform: rotate(78deg);
+  z-index: 16;
+}
+
+.lost-basket .unlucky {
+  left: 455px;
+  top: 362px;
+  width: 171px;
+  height: 117px;
+  transform: rotate(-10deg);
+  z-index: 17;
+}
+
+.lost-basket .cash {
+  left: 603px;
+  top: 326px;
+  width: 116px;
+  height: 155px;
+  transform: rotate(78deg);
+  z-index: 18;
+}
+
+/* LOST & FOUND INFORMATION */
+
+.hint {
+  position: absolute;
+  left: 45px;
+  bottom: 62px;
+  font: 400 26px "Bungee", Impact, sans-serif;
+  z-index: 2;
+}
+
+.discovery {
+  position: absolute;
+  left: 46px;
+  bottom: 52px;
+  width: 525px;
+  padding: 24px 30px;
+  border: 4px solid #111;
+  background: #fffdf2;
+  box-shadow: 10px 10px 0 #111;
+  transform: rotate(-2deg);
+  z-index: 60;
+  display: none;
+  font-family: "Quicksand", Arial, sans-serif;
+}
+
+.discovery h3 {
+  font: 400 31px/1.2 "Bungee", Impact, sans-serif;
+  margin: 0 28px 18px 0;
+}
+
+.discovery p {
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.discovery strong { color: var(--red); }
+
+.close {
+  position: absolute;
+  right: 9px;
+  top: 4px;
+  font-size: 28px;
+  background: none;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SECTION ONE — HOMEPAGE -->
+
+<section class="scene" id="home">
+<div class="art" id="home-art">
+
+  <h1 class="title home-first">THE NINTH</h1>
+
+  <div class="title home-second" aria-hidden="true">
+    ROOM
+  </div>
+
+  <img
+    class="home-fig"
+    id="home-fig"
+    src="emotions/calm.png"
+    alt="Fig the white cat"
+  >
+
+  <div class="speech" id="speech" aria-live="polite"></div>
+
+  <div class="basket home-basket">
+
+    <img
+      class="basket-image"
+      src="images/bucket.png"
+      alt="Upright red basket"
+    >
+
+    <div class="inside">
+      <img class="obj cap" src="images/cap.png" data-name="cap" alt="Cap" tabindex="0">
+      <img class="obj time" src="images/time.png" data-name="time" alt="Clock" tabindex="0">
+      <img class="obj phone" src="images/phone.png" data-name="phone" alt="Telephone" tabindex="0">
+      <img class="obj drink" src="images/drink.png" data-name="drink" alt="Coffee" tabindex="0">
+      <img class="obj fish" src="images/fish.png" data-name="fish" alt="Sardines" tabindex="0">
+      <img class="obj flower" src="images/deaf-flower.png" data-name="flower" alt="Flower" tabindex="0">
+      <img class="obj hirono" src="images/hirono.png" data-name="hirono" alt="Photographer" tabindex="0">
+      <img class="obj books" src="images/books.png" data-name="books" alt="Books" tabindex="0">
+      <img class="obj unlucky" src="images/unlucky.png" data-name="unlucky" alt="Fortune cookie" tabindex="0">
+      <img class="obj cash" src="images/cash.png" data-name="cash" alt="Cash" tabindex="0">
+      <img class="obj soda" src="images/soda.png" data-name="soda" alt="Soda" tabindex="0">
+      <img class="obj paint" src="images/paint.png" data-name="paint" alt="Paint" tabindex="0">
+    </div>
+
+  </div>
+
+  <img
+    class="apple"
+    id="apple"
+    src="images/kipple.png"
+    alt="Open navigation"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
+    aria-controls="apple-menu"
+  >
+
+  <!-- UPDATED: MEMORY BOX REPLACES FIG'S JOURNAL -->
+
+  <nav class="apple-menu" id="apple-menu" aria-label="Main navigation">
+    <a href="#home">The Ninth Room</a>
+    <a href="#world">Fig's World</a>
+    <a href="#lost">Lost &amp; Found</a>
+    <a href="memory-box.html">Memory Box</a>
+    <a href="photobooth.html">Photobooth</a>
+  </nav>
+
+</div>
+</section>
+
+<!-- SECTION TWO — FIG'S WORLD -->
+
+<section class="scene" id="world">
+<div class="art" id="world-art">
+
+  <div class="burst burst-one"></div>
+  <div class="burst burst-two"></div>
+
+  <h2 class="title world-first">FIG'S</h2>
+
+  <div class="title world-second" id="world-word" aria-label="WORLD">
+    WORLD
+  </div>
+
+  <div class="note">
+
+    <img
+      class="note-img"
+      src="images/note.png"
+      alt="Vintage paper note"
+    >
+
+    <div class="note-writing" id="paper-text" tabindex="0">
+
+      <p>There's nothing like your own place, right?</p>
+
+      <p>We all have that place where we have a sense of belonging. A place where we can let our guard down and be ourselves and not worry about what anyone else has to say. It could be your bedroom, it could be a small corner of your mind, or a place in your imagination.</p>
+
+      <p>For Fig, that spot's the Ninth Room.</p>
+
+      <p>The Ninth Room's as Fig's as this space can be, and Fig's just no ordinary cat. It is filled with his things, bits and pieces, memories of him, and whatever he think is right in the Ninth Room.</p>
+
+      <p>Isn't it a little too tidy and factlessness? It's not really, and not every detail has an explanation. But this is the charm of your place, isn't it? It doesn't have to be clear to anyone else.</p>
+
+      <p>In Fig's Room He doesn't have to put on a show for anyone. Be anyone he wants. Curious Stubborn, Dramatic, Rude or just plain Fig.</p>
+
+      <p>People can immerse themselves in his world, discover oddities, and get to know the strange feline who lives there.</p>
+
+      <p>But remember just one thing.</p>
+
+      <p>You're a guest in Fig's world.</p>
+
+      <p>And believe me, Fig's got nothing against throwing it in your face.</p>
+
+    </div>
+
+  </div>
+
+  <img
+    class="world-fig"
+    id="world-fig"
+    src="emotions/calm.png"
+    alt="Fig standing in his world"
+  >
+
+  <button class="meet" id="meet" type="button">
+    CLICK TO MEET FIG!
+  </button>
+
+</div>
+</section>
+
+<!-- SECTION THREE — LOST & FOUND -->
+
+<section class="scene" id="lost">
+<div class="art" id="lost-art">
+
+  <h2 class="title lost-first">LOST &amp;</h2>
+
+  <div class="title lost-second">FOUND</div>
+
+  <div class="basket lost-basket">
+
+    <img
+      class="basket-image"
+      src="images/bucket.png"
+      alt="Horizontal red basket"
+    >
+
+    <div class="inside">
+      <img class="obj phone" src="images/phone.png" data-name="phone" alt="Telephone" tabindex="0">
+      <img class="obj flower" src="images/deaf-flower.png" data-name="flower" alt="Flower" tabindex="0">
+      <img class="obj books" src="images/books.png" data-name="books" alt="Books" tabindex="0">
+      <img class="obj paint" src="images/paint.png" data-name="paint" alt="Paint" tabindex="0">
+      <img class="obj time" src="images/time.png" data-name="time" alt="Clock" tabindex="0">
+      <img class="obj drink" src="images/drink.png" data-name="drink" alt="Coffee" tabindex="0">
+      <img class="obj fish" src="images/fish.png" data-name="fish" alt="Sardines" tabindex="0">
+      <img class="obj hirono" src="images/hirono.png" data-name="hirono" alt="Photographer" tabindex="0">
+      <img class="obj cap" src="images/cap.png" data-name="cap" alt="Cap" tabindex="0">
+      <img class="obj soda" src="images/soda.png" data-name="soda" alt="Soda" tabindex="0">
+      <img class="obj unlucky" src="images/unlucky.png" data-name="unlucky" alt="Fortune cookie" tabindex="0">
+      <img class="obj cash" src="images/cash.png" data-name="cash" alt="Money" tabindex="0">
+    </div>
+
+  </div>
+
+  <p class="hint" id="hint">
+    GO AHEAD. DIG THROUGH FIG'S STUFF.
+  </p>
+
+  <aside class="discovery" id="discovery" aria-live="polite">
+
+    <button
+      class="close"
+      id="close"
+      type="button"
+      aria-label="Close description"
+    >×</button>
+
+    <h3 id="discovery-title"></h3>
+
+    <p>
+      <strong>WHAT IT'S FOR:</strong>
+      <span id="discovery-purpose"></span>
+    </p>
+
+    <p>
+      <strong>FIG SAYS:</strong>
+      <span id="discovery-fig"></span>
+    </p>
+
+  </aside>
+
+</div>
+</section>
+
+<script>
+"use strict";
+
+/* ARTBOARD SCALING */
+
+const ART_W = 1904;
+const ART_H = 1068;
+
+function scalePage() {
+  for (const scene of document.querySelectorAll(".scene")) {
+    const scale = scene.clientWidth / ART_W;
+    scene.style.height = (ART_H * scale) + "px";
+    scene.querySelector(".art").style.setProperty("--scale", scale);
+  }
+}
+
+window.addEventListener("resize", scalePage, { passive: true });
+scalePage();
+
+/* KEEP THE D IN WORLD VISIBLE */
+
+function fitWorld() {
+  const word = document.getElementById("world-word");
+
+  word.style.transform = "none";
+
+  const naturalWidth = word.offsetWidth;
+  const targetWidth = 1025;
+  const horizontalScale = Math.min(1, targetWidth / naturalWidth);
+
+  word.style.transform = "scaleX(" + horizontalScale + ")";
+}
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(fitWorld);
+} else {
+  fitWorld();
+}
+
+/* OBJECT INFORMATION */
+
+const details = {
+  cap: [
+    "THE CAP",
+    "Keeping the sun out of your eyes.",
+    "It's called fashion. You should try it.",
+    "annoyed"
+  ],
+  time: [
+    "THE CLOCK",
+    "Telling the time.",
+    "It's always time for you to leave.",
+    "angry"
+  ],
+  phone: [
+    "THE TELEPHONE",
+    "Making and receiving calls.",
+    "Important business. No, you can't have the number.",
+    "sass"
+  ],
+  flower: [
+    "THE FLOWER",
+    "Decoration and a little bit of nature.",
+    "I was going to give it to someone. Then I changed my mind.",
+    "sad"
+  ],
+  fish: [
+    "THE SARDINES",
+    "Food. Fish in a tin.",
+    "Emergency supplies. Don't ask what the emergency is.",
+    "mad"
+  ],
+  drink: [
+    "THE COFFEE",
+    "A drink for staying awake.",
+    "Dealing with you is exhausting.",
+    "annoyed"
+  ],
+  books: [
+    "THE BOOKS",
+    "Reading, writing, and keeping stories.",
+    "Some of those are my journals. That's all you need to know.",
+    "shocked"
+  ],
+  cash: [
+    "THE MONEY",
+    "Buying things.",
+    "No, you cannot borrow any.",
+    "smug"
+  ],
+  soda: [
+    "THE SODA",
+    "A fizzy drink.",
+    "I was saving that. WAS.",
+    "annoyed"
+  ],
+  paint: [
+    "THE PAINT",
+    "Making art and decorating things.",
+    "I'm an artist. Obviously.",
+    "sad"
+  ],
+  unlucky: [
+    "THE FORTUNE COOKIE",
+    "A snack with a fortune inside.",
+    "Your fortune says you're nosy.",
+    "sass"
+  ],
+  hirono: [
+    "THE PHOTOGRAPHER",
+    "Taking pictures and capturing memories.",
+    "He's here for my good side. Which is every side.",
+    "happy"
+  ]
+};
+
+/* FIG REACTIONS */
+
+const homeFig = document.getElementById("home-fig");
+const speech = document.getElementById("speech");
+
+let reactionTimer;
+
+function figReact(name) {
+  const info = details[name];
+  if (!info) return;
+
+  clearTimeout(reactionTimer);
+
+  homeFig.src = "emotions/" + info[3] + ".png";
+  speech.textContent = info[2];
+  speech.style.display = "block";
+
+  reactionTimer = setTimeout(() => {
+    homeFig.src = "emotions/calm.png";
+    speech.style.display = "none";
+  }, 3000);
+}
+
+/* LOST & FOUND DESCRIPTIONS */
+
+function showDiscovery(name) {
+  const info = details[name];
+  if (!info) return;
+
+  document.getElementById("discovery-title").textContent = info[0];
+  document.getElementById("discovery-purpose").textContent = info[1];
+  document.getElementById("discovery-fig").textContent = info[2];
+
+  document.getElementById("discovery").style.display = "block";
+  document.getElementById("hint").style.display = "none";
+}
+
+document.getElementById("close").addEventListener("click", () => {
+  document.getElementById("discovery").style.display = "none";
+  document.getElementById("hint").style.display = "block";
+});
+
+/* TRIM TRANSPARENT IMAGE PADDING */
+
+const trimmedImages = new Map();
+
+function cropEmptySpace(url) {
+  if (trimmedImages.has(url)) {
+    return trimmedImages.get(url);
+  }
+
+  const task = new Promise(resolve => {
+    const image = new Image();
+
+    image.onload = () => {
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = image.naturalWidth;
+        canvas.height = image.naturalHeight;
+
+        const ctx = canvas.getContext("2d", {
+          willReadFrequently: true
+        });
+
+        ctx.drawImage(image, 0, 0);
+
+        const pixels = ctx.getImageData(
+          0, 0, canvas.width, canvas.height
+        );
+
+        const data = pixels.data;
+        const width = pixels.width;
+        const height = pixels.height;
+
+        let left = width;
+        let top = height;
+        let right = -1;
+        let bottom = -1;
+
+        for (let y = 0; y < height; y++) {
+          for (let x = 0; x < width; x++) {
+            const alpha = data[(y * width + x) * 4 + 3];
+
+            if (alpha > 24) {
+              left = Math.min(left, x);
+              right = Math.max(right, x);
+              top = Math.min(top, y);
+              bottom = Math.max(bottom, y);
+            }
+          }
+        }
+
+        if (right < 0) {
+          resolve(null);
+          return;
+        }
+
+        const margin = 3;
+
+        left = Math.max(0, left - margin);
+        top = Math.max(0, top - margin);
+        right = Math.min(width - 1, right + margin);
+        bottom = Math.min(height - 1, bottom + margin);
+
+        if (
+          left === 0 &&
+          top === 0 &&
+          right === width - 1 &&
+          bottom === height - 1
+        ) {
+          resolve(null);
+          return;
+        }
+
+        const cropped = document.createElement("canvas");
+
+        cropped.width = right - left + 1;
+        cropped.height = bottom - top + 1;
+
+        cropped.getContext("2d").drawImage(
+          canvas,
+          left, top,
+          cropped.width, cropped.height,
+          0, 0,
+          cropped.width, cropped.height
+        );
+
+        resolve(cropped.toDataURL("image/png"));
+      } catch (error) {
+        resolve(null);
+      }
+    };
+
+    image.onerror = () => resolve(null);
+    image.src = url;
+  });
+
+  trimmedImages.set(url, task);
+  return task;
+}
+
+document.querySelectorAll(".obj").forEach(object => {
+  const originalSource = object.getAttribute("src");
+
+  cropEmptySpace(originalSource).then(cropped => {
+    if (cropped) {
+      object.src = cropped;
+    }
+  });
+});
+
+/* DRAG OBJECTS */
+
+let drag = null;
+let topLayer = 100;
+
+document.querySelectorAll(".obj").forEach(object => {
+
+  object.addEventListener("dragstart", event => {
+    event.preventDefault();
+  });
+
+  object.addEventListener("pointerdown", event => {
+    if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
+    }
+
+    const art = object.closest(".art");
+    const artRect = art.getBoundingClientRect();
+    const rect = object.getBoundingClientRect();
+    const scale = artRect.width / ART_W;
+
+    drag = {
+      object,
+      art,
+      pointerId: event.pointerId,
+
+      startX: event.clientX,
+      startY: event.clientY,
+
+      centerX:
+        (rect.left + rect.width / 2 - artRect.left) / scale,
+
+      centerY:
+        (rect.top + rect.height / 2 - artRect.top) / scale,
+
+      offsetX:
+        (event.clientX - rect.left - rect.width / 2) / scale,
+
+      offsetY:
+        (event.clientY - rect.top - rect.height / 2) / scale,
+
+      width: object.offsetWidth,
+      height: object.offsetHeight,
+      originalTransform: getComputedStyle(object).transform,
+      moved: false
+    };
+
+    if (art.id === "home-art") {
+      figReact(object.dataset.name);
+    }
+  });
+
+  /* UPDATED: BOOKS OPEN MEMORY BOX */
+
+  object.addEventListener("dblclick", () => {
+    const name = object.dataset.name;
+
+    if (name === "books") {
+      window.location.href = "memory-box.html";
+    } else if (name === "hirono") {
+      window.location.href = "photobooth.html";
+    } else if (name === "unlucky" && object.closest("#home")) {
+      figReact(name);
+    }
+  });
+
+  object.addEventListener("keydown", event => {
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (object.closest("#home")) {
+      figReact(object.dataset.name);
+    } else {
+      showDiscovery(object.dataset.name);
+    }
+  });
+});
+
+/* MOVE OBJECTS */
+
+window.addEventListener("pointermove", event => {
+  if (!drag || event.pointerId !== drag.pointerId) {
+    return;
+  }
+
+  const current = drag;
+
+  const distance = Math.hypot(
+    event.clientX - current.startX,
+    event.clientY - current.startY
+  );
+
+  if (!current.moved && distance < 6) {
+    return;
+  }
+
+  if (!current.moved) {
+    current.moved = true;
+
+    current.object.style.left =
+      (current.centerX - current.width / 2) + "px";
+
+    current.object.style.top =
+      (current.centerY - current.height / 2) + "px";
+
+    current.object.style.width = current.width + "px";
+    current.object.style.height = current.height + "px";
+
+    current.object.style.transform = current.originalTransform;
+    current.object.style.zIndex = ++topLayer;
+
+    current.art.appendChild(current.object);
+  }
+
+  event.preventDefault();
+
+  const artRect = current.art.getBoundingClientRect();
+  const scale = artRect.width / ART_W;
+
+  let x =
+    (event.clientX - artRect.left) / scale - current.offsetX;
+
+  let y =
+    (event.clientY - artRect.top) / scale - current.offsetY;
+
+  x = Math.max(
+    current.width / 2,
+    Math.min(ART_W - current.width / 2, x)
+  );
+
+  y = Math.max(
+    current.height / 2,
+    Math.min(ART_H - current.height / 2, y)
+  );
+
+  current.object.style.left =
+    (x - current.width / 2) + "px";
+
+  current.object.style.top =
+    (y - current.height / 2) + "px";
+
+}, { passive: false });
+
+function endDrag(event) {
+  if (!drag || event.pointerId !== drag.pointerId) {
+    return;
+  }
+
+  if (drag.moved && drag.art.id === "lost-art") {
+    showDiscovery(drag.object.dataset.name);
+  }
+
+  drag = null;
+}
+
+window.addEventListener("pointerup", endDrag);
+
+window.addEventListener("pointercancel", event => {
+  if (drag && event.pointerId === drag.pointerId) {
+    drag = null;
+  }
+});
+
+/* APPLE MENU */
+
+const apple = document.getElementById("apple");
+const menu = document.getElementById("apple-menu");
+
+function toggleMenu() {
+  const open = menu.style.display === "block";
+
+  menu.style.display = open ? "none" : "block";
+  apple.setAttribute("aria-expanded", String(!open));
+}
+
+apple.addEventListener("click", toggleMenu);
+
+apple.addEventListener("keydown", event => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    toggleMenu();
+  }
+});
+
+menu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    menu.style.display = "none";
+    apple.setAttribute("aria-expanded", "false");
+  });
+});
+
+/* FIG'S WORLD INTRODUCTION */
+
+const paper = document.getElementById("paper-text");
+const meet = document.getElementById("meet");
+const worldFig = document.getElementById("world-fig");
+
+const originalIntroduction = paper.innerHTML;
+
+const figIntroduction = `
+  <h3>Listen up, loser</h3>
+
+  <p>I'm supposed to introduce you or whatever.</p>
+
+  <p>I'm fig. Better hope you don't have a problem with that and don't ask why my name is like that. This is MY world, MY things, MY space. Everything you shouldn't touch BELONGS TO ME, but you touch it anyway.</p>
+
+  <p>I have a life, hobbies, opinions so don't try it. I have a reasonable amount of my stuff, and before you say a thing about MY basket, it's organized. You could learn a thing or two.</p>
+
+  <p>Some things around here are private. Some are interesting. Some are none of your business.</p>
+
+  <p>Naturally, you'll investigate all of them.</p>
+
+  <p>Whatever.</p>
+
+  <p>Just don't make a mess.</p>
+
+  <p>— <strong>Fig</strong></p>
+`;
+
+let showingFig = false;
+
+meet.addEventListener("click", () => {
+  showingFig = !showingFig;
+
+  paper.innerHTML = showingFig
+    ? figIntroduction
+    : originalIntroduction;
+
+  paper.scrollTop = 0;
+
+  worldFig.src = showingFig
+    ? "emotions/sass.png"
+    : "emotions/calm.png";
+
+  meet.textContent = showingFig
+    ? "BACK TO INTRO"
+    : "CLICK TO MEET FIG!";
+});
+
+</script>
+</body>
+</html>

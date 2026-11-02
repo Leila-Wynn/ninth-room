@@ -1,0 +1,3305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Memory Box | The Ninth Room</title>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Bungee&family=Quicksand:wght@500;600;700&display=swap"
+  rel="stylesheet"
+>
+
+<style>
+:root {
+  --green: #086309;
+  --yellow: #efff00;
+  --cream: #fff9e9;
+  --red: #a51920;
+  --ink: #14120f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--green);
+  font-family: "Quicksand", Arial, sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+img {
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* =========================================================
+   MEMORY BOX — LOCKED 1646 × 925 ARTBOARD
+========================================================= */
+
+.memory-page {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--green);
+}
+
+.memory-art {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 1646px;
+  height: 925px;
+
+  overflow: hidden;
+  transform-origin: top left;
+
+  background: var(--green);
+}
+
+/* TITLE */
+
+.memory-title {
+  position: absolute;
+
+  left: 17px;
+  top: 12px;
+
+  margin: 0;
+
+  color: var(--yellow);
+
+  font-family: "Bungee", Impact, sans-serif;
+  font-size: 235px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.065em;
+
+  white-space: nowrap;
+
+  transform-origin: left top;
+
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* OPEN STATE COFFEE STAIN */
+
+.title-stain {
+  position: absolute;
+
+  left: 6px;
+  top: 83px;
+
+  width: 655px;
+  height: 307px;
+
+  object-fit: fill;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.memory-art:not(.opened) .title-stain {
+  display: none;
+}
+
+/* =========================================================
+   FIG
+========================================================= */
+
+.fig {
+  position: absolute;
+
+  left: 150px;
+  top: 351px;
+
+  width: 470px;
+  height: 500px;
+
+  object-fit: contain;
+
+  cursor: pointer;
+
+  z-index: 20;
+
+  transition: transform 0.14s ease;
+}
+
+.fig:hover {
+  transform: translateY(-5px);
+}
+
+.fig:focus-visible {
+  outline: 5px dashed var(--yellow);
+  outline-offset: 5px;
+}
+
+.memory-art.opened .fig {
+  left: 205px;
+  top: 393px;
+
+  width: 455px;
+  height: 480px;
+}
+
+/* FIG SPEECH */
+
+.fig-speech {
+  position: absolute;
+
+  left: 174px;
+  top: 293px;
+
+  width: 420px;
+
+  padding: 16px 20px;
+
+  background: #fffcef;
+
+  border: 4px solid #111;
+  border-radius: 16px;
+
+  box-shadow: 8px 8px 0 #111;
+
+  color: #111;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  display: none;
+
+  z-index: 100;
+}
+
+.memory-art.opened .fig-speech {
+  left: 182px;
+  top: 315px;
+}
+
+/* =========================================================
+   CLOSED BOX
+========================================================= */
+
+.closed-box {
+  position: absolute;
+
+  left: 740px;
+  top: 262px;
+
+  width: 875px;
+  height: 625px;
+
+  padding: 0;
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  z-index: 6;
+}
+
+.closed-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.closed-box:hover {
+  filter: brightness(1.035);
+}
+
+/* COFFEE STAIN ON LID */
+
+.lid-stain {
+  position: absolute;
+
+  left: 182px;
+  top: 117px;
+
+  width: 470px;
+  height: 235px;
+
+  object-fit: fill;
+
+  transform: rotate(-10deg);
+
+  opacity: 0.83;
+
+  pointer-events: none;
+
+  z-index: 5;
+}
+
+/* =========================================================
+   OPEN BOX
+========================================================= */
+
+.open-stage {
+  position: absolute;
+
+  left: 615px;
+  top: 238px;
+
+  width: 1025px;
+  height: 680px;
+
+  z-index: 5;
+}
+
+.open-picture {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 680px;
+  height: 1025px;
+
+  object-fit: fill;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-90deg);
+
+  cursor: pointer;
+
+  z-index: 1;
+}
+
+/* BOX CONTENTS */
+
+.contents {
+  position: absolute;
+
+  left: 42px;
+  top: 41px;
+
+  width: 942px;
+  height: 590px;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 10;
+}
+
+/* OBJECTS */
+
+.item {
+  position: absolute;
+
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  background: transparent;
+
+  cursor: grab;
+
+  touch-action: none;
+  pointer-events: auto;
+
+  user-select: none;
+
+  transform:
+    rotate(var(--rotation, 0deg));
+
+  transform-origin: center;
+
+  z-index: var(--layer, 10);
+}
+
+.item:active {
+  cursor: grabbing;
+}
+
+.item:hover {
+  filter: drop-shadow(0 6px 4px rgba(0,0,0,.22));
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
+
+/* COLLAGE */
+
+.receipts {
+  left: 18px;
+  top: 13px;
+
+  width: 220px;
+  height: 346px;
+
+  --rotation: 7deg;
+  --layer: 15;
+}
+
+.mails {
+  left: 130px;
+  top: 66px;
+
+  width: 240px;
+  height: 212px;
+
+  --rotation: -7deg;
+  --layer: 9;
+}
+
+.pumpkin {
+  left: 273px;
+  top: 123px;
+
+  width: 263px;
+  height: 263px;
+
+  --rotation: -4deg;
+  --layer: 17;
+}
+
+.roses {
+  left: 407px;
+  top: 3px;
+
+  width: 263px;
+  height: 279px;
+
+  --rotation: -3deg;
+  --layer: 21;
+}
+
+.bunny {
+  left: 598px;
+  top: 18px;
+
+  width: 266px;
+  height: 294px;
+
+  --rotation: 3deg;
+  --layer: 20;
+}
+
+.journal {
+  left: 785px;
+  top: 35px;
+
+  width: 142px;
+  height: 229px;
+
+  --rotation: 1deg;
+  --layer: 23;
+}
+
+.comics {
+  left: 733px;
+  top: 113px;
+
+  width: 200px;
+  height: 241px;
+
+  --rotation: 11deg;
+  --layer: 14;
+}
+
+.chalk {
+  left: 14px;
+  top: 328px;
+
+  width: 248px;
+  height: 173px;
+
+  --rotation: -5deg;
+  --layer: 19;
+}
+
+.handwritten {
+  left: 210px;
+  top: 358px;
+
+  width: 322px;
+  height: 221px;
+
+  --rotation: -2deg;
+  --layer: 24;
+}
+
+.camera {
+  left: 17px;
+  top: 412px;
+
+  width: 305px;
+  height: 171px;
+
+  --rotation: -1deg;
+  --layer: 28;
+}
+
+.iphone {
+  left: 483px;
+  top: 258px;
+
+  width: 245px;
+  height: 323px;
+
+  --rotation: -12deg;
+  --layer: 27;
+}
+
+.tech {
+  left: 683px;
+  top: 263px;
+
+  width: 258px;
+  height: 309px;
+
+  --rotation: 10deg;
+  --layer: 26;
+}
+
+/* =========================================================
+   MEMORY CARD
+========================================================= */
+
+.memory-card {
+  position: absolute;
+
+  left: 57px;
+  top: 270px;
+
+  width: 520px;
+  max-height: 570px;
+
+  padding: 28px 31px;
+
+  overflow-y: auto;
+
+  background: var(--cream);
+
+  border: 5px solid #111;
+
+  box-shadow: 12px 12px 0 #111;
+
+  transform: rotate(-2deg);
+
+  z-index: 110;
+}
+
+.memory-card h2 {
+  margin: 0 35px 16px 0;
+
+  font-family: "Bungee", Impact, sans-serif;
+  font-size: 31px;
+}
+
+.memory-card p {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.memory-card strong {
+  color: var(--red);
+}
+
+.close-card {
+  position: absolute;
+
+  right: 12px;
+  top: 6px;
+
+  border: 0;
+  background: transparent;
+
+  font-size: 31px;
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   PIXEL PANIC SECTION
+========================================================= */
+
+.panic-page {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #f4efdc;
+}
+
+.panic-art {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 1646px;
+  height: 925px;
+
+  overflow: hidden;
+  transform-origin: top left;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 38px,
+      rgba(0,0,0,.025) 39px,
+      rgba(0,0,0,.025) 40px
+    ),
+    #f4efdc;
+}
+
+/* BIG GAME TITLE */
+
+.panic-title {
+  position: absolute;
+
+  left: 48px;
+  top: 34px;
+
+  margin: 0;
+
+  color: #111;
+
+  font-family: "Bungee", Impact, sans-serif;
+  font-size: 105px;
+  line-height: 1;
+
+  letter-spacing: -5px;
+
+  z-index: 5;
+}
+
+.panic-title span {
+  color: var(--red);
+}
+
+.panic-subtitle {
+  position: absolute;
+
+  left: 56px;
+  top: 152px;
+
+  margin: 0;
+
+  font-family: "Bungee", sans-serif;
+  font-size: 22px;
+
+  color: var(--green);
+}
+
+/* HUD */
+
+.panic-hud {
+  position: absolute;
+
+  right: 60px;
+  top: 49px;
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  font-family: "Bungee", sans-serif;
+
+  z-index: 10;
+}
+
+.hearts {
+  font-size: 34px;
+  letter-spacing: 5px;
+
+  color: var(--red);
+}
+
+.score {
+  font-size: 25px;
+  color: #111;
+}
+
+/* GAME FRAME */
+
+.game-shell {
+  position: absolute;
+
+  left: 55px;
+  top: 205px;
+
+  width: 1536px;
+  height: 555px;
+
+  background: #fbf8ea;
+
+  border: 7px solid #111;
+
+  box-shadow:
+    14px 14px 0 var(--green);
+
+  overflow: hidden;
+
+  z-index: 4;
+}
+
+#panic-canvas {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  background: #fbf8ea;
+}
+
+/* START SCREEN */
+
+.start-screen,
+.result-screen {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(251,248,234,.94);
+
+  z-index: 20;
+}
+
+.start-screen h2,
+.result-screen h2 {
+  margin: 0 0 13px;
+
+  font-family: "Bungee", sans-serif;
+  font-size: 55px;
+
+  color: #111;
+}
+
+.start-screen p,
+.result-screen p {
+  max-width: 690px;
+
+  margin: 0 0 28px;
+
+  text-align: center;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.panic-button {
+  padding: 17px 28px;
+
+  background: var(--yellow);
+
+  border: 5px solid #111;
+
+  box-shadow: 7px 7px 0 #111;
+
+  font-family: "Bungee", sans-serif;
+  font-size: 21px;
+
+  cursor: pointer;
+}
+
+.panic-button:active {
+  transform: translate(5px,5px);
+  box-shadow: 2px 2px 0 #111;
+}
+
+/* QUESTION CARD */
+
+.quiz-card {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 780px;
+
+  padding: 28px;
+
+  transform: translate(-50%,-50%);
+
+  background: #fffbed;
+
+  border: 6px solid #111;
+
+  box-shadow: 13px 13px 0 var(--red);
+
+  z-index: 30;
+}
+
+.quiz-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 13px;
+}
+
+.quiz-number {
+  font-family: "Bungee", sans-serif;
+  font-size: 17px;
+
+  color: var(--red);
+}
+
+.quiz-time {
+  font-family: "Bungee", sans-serif;
+  font-size: 18px;
+}
+
+.timer-track {
+  width: 100%;
+  height: 16px;
+
+  margin-bottom: 22px;
+
+  border: 3px solid #111;
+
+  background: #ddd7c3;
+}
+
+.timer-fill {
+  width: 100%;
+  height: 100%;
+
+  background: var(--green);
+
+  transform-origin: left;
+}
+
+.quiz-question {
+  margin: 0 0 22px;
+
+  font-family: "Bungee", sans-serif;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.answer {
+  min-height: 74px;
+
+  padding: 12px 16px;
+
+  border: 4px solid #111;
+
+  background: white;
+
+  text-align: left;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.answer:hover {
+  background: var(--yellow);
+}
+
+.answer span {
+  font-family: "Bungee", sans-serif;
+
+  color: var(--red);
+
+  margin-right: 7px;
+}
+
+/* RESULT MESSAGE WHILE PLAYING */
+
+.panic-flash {
+  position: absolute;
+
+  left: 50%;
+  bottom: 35px;
+
+  transform: translateX(-50%);
+
+  padding: 12px 22px;
+
+  background: #111;
+  color: white;
+
+  font-family: "Bungee", sans-serif;
+  font-size: 19px;
+
+  z-index: 18;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+/* BOTTOM INSTRUCTIONS */
+
+.panic-help {
+  position: absolute;
+
+  left: 55px;
+  bottom: 65px;
+
+  font-family: "Bungee", sans-serif;
+  font-size: 20px;
+
+  color: #111;
+}
+
+.panic-help span {
+  color: var(--red);
+}
+
+.panic-fig-comment {
+  position: absolute;
+
+  right: 60px;
+  bottom: 52px;
+
+  max-width: 650px;
+
+  text-align: right;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  color: var(--green);
+}
+
+/* mobile safety */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =======================================================
+     MEMORY BOX
+======================================================= -->
+
+<section class="memory-page" id="memory-page">
+
+<div class="memory-art" id="memory-art">
+
+  <img
+    src="images/stain.png"
+    class="title-stain trim"
+    alt=""
+  >
+
+  <h1 class="memory-title" id="memory-title">
+    MEMORY BOX
+  </h1>
+
+  <img
+    src="emotions/calm.png"
+    class="fig"
+    id="fig"
+    role="button"
+    tabindex="0"
+    aria-label="Talk to Fig"
+    alt="Fig the white cat"
+  >
+
+  <div
+    class="fig-speech"
+    id="fig-speech"
+    aria-live="polite"
+  ></div>
+
+  <!-- CLOSED -->
+
+  <button
+    class="closed-box"
+    id="closed-box"
+    type="button"
+    aria-label="Open Fig's memory box"
+    aria-expanded="false"
+  >
+
+    <img
+      src="images/closed.png"
+      class="closed-picture trim-box"
+      alt=""
+    >
+
+    <img
+      src="images/stain.png"
+      class="lid-stain trim"
+      alt=""
+    >
+
+  </button>
+
+  <!-- OPEN -->
+
+  <div
+    class="open-stage"
+    id="open-stage"
+    hidden
+  >
+
+    <img
+      src="images/open.png"
+      class="open-picture trim-box"
+      id="open-picture"
+      role="button"
+      tabindex="0"
+      alt="Open memory box"
+      title="Click the cardboard to close the box"
+    >
+
+    <div class="contents" id="contents">
+
+      <button class="item receipts" type="button" data-memory="receipts">
+        <img class="trim" src="images/receipts.png" alt="Receipts">
+      </button>
+
+      <button class="item mails" type="button" data-memory="mails">
+        <img class="trim" src="images/mails.png" alt="Mail">
+      </button>
+
+      <button class="item pumpkin" type="button" data-memory="pumpkin">
+        <img class="trim" src="images/pumpkin.png" alt="Pumpkin">
+      </button>
+
+      <button class="item roses" type="button" data-memory="roses">
+        <img class="trim" src="images/roses.png" alt="Roses">
+      </button>
+
+      <button class="item bunny" type="button" data-memory="bunny">
+        <img class="trim" src="images/bunny.png" alt="Bunny">
+      </button>
+
+      <button class="item journal" type="button" data-memory="journal">
+        <img class="trim" src="images/journal.png" alt="Journal">
+      </button>
+
+      <button class="item comics" type="button" data-memory="comics">
+        <img class="trim" src="images/comics.png" alt="Comics">
+      </button>
+
+      <button class="item chalk" type="button" data-memory="chalk">
+        <img class="trim" src="images/chalk.png" alt="Chalk">
+      </button>
+
+      <button class="item handwritten" type="button" data-memory="note">
+        <img class="trim" src="images/note1.png" alt="Handwritten note">
+      </button>
+
+      <button class="item camera" type="button" data-memory="camera">
+        <img class="trim" src="images/camera.png" alt="Camera">
+      </button>
+
+      <button class="item iphone" type="button" data-memory="iphone">
+        <img class="trim" src="images/iphone.png" alt="Cracked iPhone">
+      </button>
+
+      <button class="item tech" type="button" data-memory="tech">
+        <img class="trim" src="images/tech.png" alt="Technology">
+      </button>
+
+    </div>
+
+  </div>
+
+  <aside
+    class="memory-card"
+    id="memory-card"
+    aria-live="polite"
+    hidden
+  >
+
+    <button
+      class="close-card"
+      id="close-card"
+      type="button"
+      aria-label="Close memory"
+    >×</button>
+
+    <h2 id="card-title"></h2>
+
+    <p id="card-description"></p>
+
+    <p>
+      <strong>FIG SAYS:</strong>
+      <span id="card-fig"></span>
+    </p>
+
+  </aside>
+
+</div>
+</section>
+
+<!-- =======================================================
+     FIG'S PIXEL PANIC
+======================================================= -->
+
+<section class="panic-page" id="pixel-panic">
+
+<div class="panic-art" id="panic-art">
+
+  <h2 class="panic-title">
+    FIG'S <span>PIXEL PANIC</span>
+  </h2>
+
+  <p class="panic-subtitle">
+    RUN. REMEMBER. DON'T EMBARRASS YOURSELF.
+  </p>
+
+  <div class="panic-hud">
+
+    <div
+      class="hearts"
+      id="panic-hearts"
+      aria-label="Three lives"
+    >
+      ♥ ♥ ♥
+    </div>
+
+    <div class="score">
+      SCORE:
+      <span id="panic-score">0</span>/5
+    </div>
+
+  </div>
+
+  <div class="game-shell">
+
+    <canvas
+      id="panic-canvas"
+      width="1522"
+      height="541"
+      aria-label="Fig's Pixel Panic running game"
+    ></canvas>
+
+    <!-- START -->
+
+    <div class="start-screen" id="panic-start">
+
+      <h2>READY?</h2>
+
+      <p>
+        Fig runs automatically. When trouble approaches,
+        answer a question before the timer hits zero.
+        Correct answers save Fig. Wrong answers cost a heart.
+      </p>
+
+      <button
+        class="panic-button"
+        id="start-panic"
+        type="button"
+      >
+        START PANIC
+      </button>
+
+    </div>
+
+    <!-- QUIZ -->
+
+    <div
+      class="quiz-card"
+      id="quiz-card"
+      hidden
+    >
+
+      <div class="quiz-top">
+
+        <span
+          class="quiz-number"
+          id="quiz-number"
+        >
+          QUESTION 1/5
+        </span>
+
+        <span
+          class="quiz-time"
+          id="quiz-time"
+        >
+          10.0
+        </span>
+
+      </div>
+
+      <div class="timer-track">
+        <div
+          class="timer-fill"
+          id="timer-fill"
+        ></div>
+      </div>
+
+      <h3
+        class="quiz-question"
+        id="quiz-question"
+      ></h3>
+
+      <div
+        class="answers"
+        id="quiz-answers"
+      ></div>
+
+    </div>
+
+    <!-- END -->
+
+    <div
+      class="result-screen"
+      id="panic-result"
+      hidden
+    >
+
+      <h2 id="result-title">
+        GAME OVER
+      </h2>
+
+      <p id="result-message"></p>
+
+      <button
+        class="panic-button"
+        id="restart-panic"
+        type="button"
+      >
+        TRY AGAIN
+      </button>
+
+    </div>
+
+    <div
+      class="panic-flash"
+      id="panic-flash"
+    ></div>
+
+  </div>
+
+  <p class="panic-help">
+    <span>3 HEARTS.</span>
+    FIVE QUESTIONS.
+    TEN SECONDS EACH.
+  </p>
+
+  <p
+    class="panic-fig-comment"
+    id="panic-fig-comment"
+  >
+    FIG: “Try not to get me killed.”
+  </p>
+
+</div>
+</section>
+
+<script>
+"use strict";
+
+/* =========================================================
+   SCALE BOTH ARTBOARDS
+========================================================= */
+
+const ART_WIDTH = 1646;
+const ART_HEIGHT = 925;
+
+function scaleLockedSection(section, art) {
+
+  const scale =
+    section.clientWidth /
+    ART_WIDTH;
+
+  section.style.height =
+    (ART_HEIGHT * scale) + "px";
+
+  art.style.transform =
+    `scale(${scale})`;
+}
+
+const memoryPage =
+  document.getElementById("memory-page");
+
+const memoryArt =
+  document.getElementById("memory-art");
+
+const panicPage =
+  document.getElementById("pixel-panic");
+
+const panicArt =
+  document.getElementById("panic-art");
+
+function fitEverything() {
+
+  scaleLockedSection(
+    memoryPage,
+    memoryArt
+  );
+
+  scaleLockedSection(
+    panicPage,
+    panicArt
+  );
+}
+
+window.addEventListener(
+  "resize",
+  fitEverything,
+  { passive: true }
+);
+
+fitEverything();
+
+/* =========================================================
+   MEMORY TITLE
+========================================================= */
+
+function fitMemoryTitle() {
+
+  const title =
+    document.getElementById(
+      "memory-title"
+    );
+
+  title.style.transform =
+    "none";
+
+  const width =
+    title.offsetWidth;
+
+  title.style.transform =
+    `scaleX(${1590 / width})`;
+}
+
+if (
+  document.fonts &&
+  document.fonts.ready
+) {
+
+  document.fonts.ready.then(
+    fitMemoryTitle
+  );
+
+} else {
+
+  fitMemoryTitle();
+}
+
+/* =========================================================
+   TRANSPARENT PNG TRIMMING
+========================================================= */
+
+const cropCache =
+  new Map();
+
+function makeTrimmedVersion(url) {
+
+  if (cropCache.has(url)) {
+    return cropCache.get(url);
+  }
+
+  const promise =
+    new Promise(resolve => {
+
+      const source =
+        new Image();
+
+      source.onload = () => {
+
+        try {
+
+          const canvas =
+            document.createElement(
+              "canvas"
+            );
+
+          canvas.width =
+            source.naturalWidth;
+
+          canvas.height =
+            source.naturalHeight;
+
+          const ctx =
+            canvas.getContext(
+              "2d",
+              {
+                willReadFrequently:
+                  true
+              }
+            );
+
+          ctx.drawImage(
+            source,
+            0,
+            0
+          );
+
+          const pixels =
+            ctx.getImageData(
+              0,
+              0,
+              canvas.width,
+              canvas.height
+            );
+
+          const data =
+            pixels.data;
+
+          const w =
+            pixels.width;
+
+          const h =
+            pixels.height;
+
+          let left = w;
+          let right = -1;
+          let top = h;
+          let bottom = -1;
+
+          for (
+            let y = 0;
+            y < h;
+            y++
+          ) {
+
+            for (
+              let x = 0;
+              x < w;
+              x++
+            ) {
+
+              const alpha =
+                data[
+                  (y * w + x) *
+                  4 + 3
+                ];
+
+              if (alpha > 18) {
+
+                if (x < left) {
+                  left = x;
+                }
+
+                if (x > right) {
+                  right = x;
+                }
+
+                if (y < top) {
+                  top = y;
+                }
+
+                if (y > bottom) {
+                  bottom = y;
+                }
+              }
+            }
+          }
+
+          if (right < 0) {
+
+            resolve(null);
+
+            return;
+          }
+
+          const margin = 2;
+
+          left =
+            Math.max(
+              0,
+              left - margin
+            );
+
+          top =
+            Math.max(
+              0,
+              top - margin
+            );
+
+          right =
+            Math.min(
+              w - 1,
+              right + margin
+            );
+
+          bottom =
+            Math.min(
+              h - 1,
+              bottom + margin
+            );
+
+          const cropped =
+            document.createElement(
+              "canvas"
+            );
+
+          cropped.width =
+            right - left + 1;
+
+          cropped.height =
+            bottom - top + 1;
+
+          cropped
+            .getContext("2d")
+            .drawImage(
+              canvas,
+
+              left,
+              top,
+              cropped.width,
+              cropped.height,
+
+              0,
+              0,
+              cropped.width,
+              cropped.height
+            );
+
+          resolve(
+            cropped.toDataURL(
+              "image/png"
+            )
+          );
+
+        } catch {
+
+          resolve(null);
+
+        }
+      };
+
+      source.onerror =
+        () => resolve(null);
+
+      source.src = url;
+    });
+
+  cropCache.set(
+    url,
+    promise
+  );
+
+  return promise;
+}
+
+document
+  .querySelectorAll(
+    ".trim, .trim-box"
+  )
+  .forEach(image => {
+
+    const src =
+      image.getAttribute("src");
+
+    makeTrimmedVersion(src)
+      .then(trimmed => {
+
+        if (trimmed) {
+          image.src = trimmed;
+        }
+
+      });
+  });
+
+/* =========================================================
+   MEMORY BOX OPEN / CLOSE
+========================================================= */
+
+const closedBox =
+  document.getElementById(
+    "closed-box"
+  );
+
+const openStage =
+  document.getElementById(
+    "open-stage"
+  );
+
+const openPicture =
+  document.getElementById(
+    "open-picture"
+  );
+
+let boxOpen = false;
+
+function setBoxState(open) {
+
+  boxOpen = open;
+
+  memoryArt.classList.toggle(
+    "opened",
+    open
+  );
+
+  closedBox.hidden =
+    open;
+
+  openStage.hidden =
+    !open;
+
+  closedBox.setAttribute(
+    "aria-expanded",
+    String(open)
+  );
+
+  closeMemoryCard();
+
+  if (open) {
+
+    figReact(
+      "shocked",
+      "HEY. Who told you that you could open that?"
+    );
+
+  } else {
+
+    resetMemoryItems();
+
+    figReact(
+      "annoyed",
+      "Good. Now leave it alone."
+    );
+  }
+}
+
+closedBox.addEventListener(
+  "click",
+  () => setBoxState(true)
+);
+
+openPicture.addEventListener(
+  "click",
+  () => setBoxState(false)
+);
+
+/* =========================================================
+   FIG INTERACTION
+========================================================= */
+
+const fig =
+  document.getElementById("fig");
+
+const figSpeech =
+  document.getElementById(
+    "fig-speech"
+  );
+
+let figTimer;
+let figTalkIndex = 0;
+
+const figLines = [
+
+  [
+    "annoyed",
+    "Why are you poking me?"
+  ],
+
+  [
+    "sass",
+    "You came here for the box. It's literally right there."
+  ],
+
+  [
+    "smug",
+    "Yes, I keep things. It's called having a life."
+  ],
+
+  [
+    "mad",
+    "If you touch the bunny, we're going to have a problem."
+  ],
+
+  [
+    "shy",
+    "...Some of this stuff actually matters to me."
+  ]
+];
+
+function figReact(
+  emotion,
+  words
+) {
+
+  clearTimeout(figTimer);
+
+  fig.src =
+    `emotions/${emotion}.png`;
+
+  figSpeech.textContent =
+    words;
+
+  figSpeech.style.display =
+    "block";
+
+  figTimer =
+    setTimeout(
+      () => {
+
+        fig.src =
+          "emotions/calm.png";
+
+        figSpeech.style.display =
+          "none";
+
+      },
+      3300
+    );
+}
+
+function talkToFig() {
+
+  const line =
+    figLines[
+      figTalkIndex
+    ];
+
+  figTalkIndex =
+    (
+      figTalkIndex + 1
+    ) %
+    figLines.length;
+
+  figReact(
+    line[0],
+    line[1]
+  );
+}
+
+fig.addEventListener(
+  "click",
+  talkToFig
+);
+
+fig.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
+
+      event.preventDefault();
+
+      talkToFig();
+    }
+  }
+);
+
+/* =========================================================
+   MEMORY INFO
+========================================================= */
+
+const memories = {
+
+  receipts: {
+    title: "THE RECEIPTS",
+    description:
+      "Old purchases, tiny reminders, and evidence that Fig apparently believes receipts count as memories.",
+    fig:
+      "Stop calculating how much I spent.",
+    emotion: "annoyed"
+  },
+
+  mails: {
+    title: "THE MAIL",
+    description:
+      "Letters, envelopes, cards, scraps, and things Fig didn't want to throw away.",
+    fig:
+      "If my name is on it, it's none of your business.",
+    emotion: "sass"
+  },
+
+  pumpkin: {
+    title: "THE PUMPKIN",
+    description:
+      "A Halloween memory that somehow earned a permanent spot in Fig's box.",
+    fig:
+      "That Halloween was iconic.",
+    emotion: "smug"
+  },
+
+  roses: {
+    title: "THE ROSES",
+    description:
+      "A bouquet Fig decided was important enough to remember.",
+    fig:
+      "I can appreciate flowers. Don't make it weird.",
+    emotion: "shy"
+  },
+
+  bunny: {
+    title: "THE BUNNY",
+    description:
+      "A stuffed bunny that Fig very obviously cares about.",
+    fig:
+      "Do. Not. Touch. Him.",
+    emotion: "mad"
+  },
+
+  journal: {
+    title: "THE JOURNAL",
+    description:
+      "Private pages filled with Fig's thoughts, stories, complaints, memories, and probably gossip.",
+    fig:
+      "CLOSE THAT.",
+    emotion: "angry"
+  },
+
+  comics: {
+    title: "THE COMICS",
+    description:
+      "Comics Fig kept because apparently being dramatic isn't enough entertainment.",
+    fig:
+      "They're good. Your opinion isn't required.",
+    emotion: "smug"
+  },
+
+  chalk: {
+    title: "THE CHALK",
+    description:
+      "A little collection of art supplies and chalk.",
+    fig:
+      "Art supplies. Don't eat them.",
+    emotion: "sass"
+  },
+
+  note: {
+    title: "THE NOTE",
+    description:
+      "A handwritten reminder Fig couldn't make himself throw away.",
+    fig:
+      "Some things are worth remembering. Whatever.",
+    emotion: "shy"
+  },
+
+  camera: {
+    title: "THE CAMERA",
+    description:
+      "A pink camera that captured some of Fig's favorite moments.",
+    fig:
+      "I look good in every photo.",
+    emotion: "happy"
+  },
+
+  iphone: {
+    title: "THE CRACKED IPHONE",
+    description:
+      "An old phone with a screen that has clearly survived something traumatic.",
+    fig:
+      "We're not talking about how that happened.",
+    emotion: "shocked"
+  },
+
+  tech: {
+    title: "THE TECH",
+    description:
+      "Headphones, stickers, and technology Fig used enough to keep around.",
+    fig:
+      "My setup is better than yours.",
+    emotion: "smug"
+  }
+};
+
+const memoryCard =
+  document.getElementById(
+    "memory-card"
+  );
+
+function showMemory(name) {
+
+  const memory =
+    memories[name];
+
+  if (!memory) {
+    return;
+  }
+
+  document.getElementById(
+    "card-title"
+  ).textContent =
+    memory.title;
+
+  document.getElementById(
+    "card-description"
+  ).textContent =
+    memory.description;
+
+  document.getElementById(
+    "card-fig"
+  ).textContent =
+    memory.fig;
+
+  memoryCard.hidden = false;
+
+  figReact(
+    memory.emotion,
+    memory.fig
+  );
+}
+
+function closeMemoryCard() {
+  memoryCard.hidden = true;
+}
+
+document
+  .getElementById(
+    "close-card"
+  )
+  .addEventListener(
+    "click",
+    closeMemoryCard
+  );
+
+/* =========================================================
+   MEMORY OBJECT DRAGGING
+========================================================= */
+
+const contents =
+  document.getElementById(
+    "contents"
+  );
+
+const memoryItems = [
+  ...document.querySelectorAll(
+    ".item"
+  )
+];
+
+const originalItems =
+  [...memoryItems];
+
+let activeDrag = null;
+let topLayer = 150;
+
+function memoryScale() {
+
+  return (
+    memoryPage.clientWidth /
+    ART_WIDTH
+  );
+}
+
+memoryItems.forEach(item => {
+
+  item.addEventListener(
+    "dragstart",
+    event => {
+      event.preventDefault();
+    }
+  );
+
+  item.addEventListener(
+    "pointerdown",
+    event => {
+
+      if (
+        event.pointerType === "mouse" &&
+        event.button !== 0
+      ) {
+        return;
+      }
+
+      const rect =
+        item.getBoundingClientRect();
+
+      const artRect =
+        memoryArt.getBoundingClientRect();
+
+      const scale =
+        memoryScale();
+
+      activeDrag = {
+
+        item,
+
+        pointerId:
+          event.pointerId,
+
+        startX:
+          event.clientX,
+
+        startY:
+          event.clientY,
+
+        moved: false,
+
+        centerX:
+          (
+            rect.left +
+            rect.width / 2 -
+            artRect.left
+          ) / scale,
+
+        centerY:
+          (
+            rect.top +
+            rect.height / 2 -
+            artRect.top
+          ) / scale,
+
+        offsetX:
+          (
+            event.clientX -
+            rect.left -
+            rect.width / 2
+          ) / scale,
+
+        offsetY:
+          (
+            event.clientY -
+            rect.top -
+            rect.height / 2
+          ) / scale,
+
+        width:
+          item.offsetWidth,
+
+        height:
+          item.offsetHeight,
+
+        transform:
+          getComputedStyle(
+            item
+          ).transform
+      };
+    }
+  );
+});
+
+window.addEventListener(
+  "pointermove",
+  event => {
+
+    if (
+      !activeDrag ||
+      event.pointerId !==
+      activeDrag.pointerId
+    ) {
+      return;
+    }
+
+    const drag =
+      activeDrag;
+
+    const distance =
+      Math.hypot(
+        event.clientX -
+        drag.startX,
+
+        event.clientY -
+        drag.startY
+      );
+
+    if (
+      !drag.moved &&
+      distance < 7
+    ) {
+      return;
+    }
+
+    if (!drag.moved) {
+
+      drag.moved = true;
+
+      drag.item.style.width =
+        drag.width + "px";
+
+      drag.item.style.height =
+        drag.height + "px";
+
+      drag.item.style.left =
+        (
+          drag.centerX -
+          drag.width / 2
+        ) + "px";
+
+      drag.item.style.top =
+        (
+          drag.centerY -
+          drag.height / 2
+        ) + "px";
+
+      drag.item.style.transform =
+        drag.transform;
+
+      drag.item.style.zIndex =
+        ++topLayer;
+
+      memoryArt.appendChild(
+        drag.item
+      );
+    }
+
+    event.preventDefault();
+
+    const artRect =
+      memoryArt.getBoundingClientRect();
+
+    const scale =
+      memoryScale();
+
+    let centerX =
+      (
+        event.clientX -
+        artRect.left
+      ) / scale -
+      drag.offsetX;
+
+    let centerY =
+      (
+        event.clientY -
+        artRect.top
+      ) / scale -
+      drag.offsetY;
+
+    centerX =
+      Math.max(
+        drag.width / 2,
+        Math.min(
+          ART_WIDTH -
+          drag.width / 2,
+          centerX
+        )
+      );
+
+    centerY =
+      Math.max(
+        drag.height / 2,
+        Math.min(
+          ART_HEIGHT -
+          drag.height / 2,
+          centerY
+        )
+      );
+
+    drag.item.style.left =
+      (
+        centerX -
+        drag.width / 2
+      ) + "px";
+
+    drag.item.style.top =
+      (
+        centerY -
+        drag.height / 2
+      ) + "px";
+  },
+  {
+    passive: false
+  }
+);
+
+window.addEventListener(
+  "pointerup",
+  event => {
+
+    if (
+      !activeDrag ||
+      event.pointerId !==
+      activeDrag.pointerId
+    ) {
+      return;
+    }
+
+    const finished =
+      activeDrag;
+
+    activeDrag = null;
+
+    if (!finished.moved) {
+
+      showMemory(
+        finished.item.dataset.memory
+      );
+    }
+  }
+);
+
+function resetMemoryItems() {
+
+  originalItems.forEach(item => {
+
+    contents.appendChild(item);
+
+    item.style.left = "";
+    item.style.top = "";
+    item.style.width = "";
+    item.style.height = "";
+    item.style.transform = "";
+    item.style.zIndex = "";
+  });
+}
+
+/* =========================================================
+   PIXEL PANIC
+========================================================= */
+
+const canvas =
+  document.getElementById(
+    "panic-canvas"
+  );
+
+const ctx =
+  canvas.getContext("2d");
+
+ctx.imageSmoothingEnabled =
+  false;
+
+const game = {
+
+  started: false,
+
+  phase: "idle",
+
+  lives: 3,
+
+  score: 0,
+
+  question: 0,
+
+  obstacleX:
+    canvas.width + 100,
+
+  speed: 7,
+
+  jumpStart: 0,
+
+  crashStart: 0,
+
+  lastTime:
+    performance.now()
+};
+
+const questions = [
+
+  {
+    question:
+      "What drink does Fig favor?",
+
+    answers: [
+      "Tea",
+      "Milk",
+      "Coffee",
+      "Water"
+    ],
+
+    correct: 2
+  },
+
+  {
+    question:
+      "How old is Fig?",
+
+    answers: [
+      "Not telling",
+      "As old as an adult cat",
+      "You're old",
+      "None of the above"
+    ],
+
+    correct: 0
+  },
+
+  {
+    question:
+      "How many friends do you think Fig has?",
+
+    answers: [
+      "Thousands. Fig is totally popular",
+      "Two cats, one bunny, and one annoying husky.",
+      "None. He is a loner.",
+      "Definitely not friends with me"
+    ],
+
+    correct: 1
+  },
+
+  {
+    question:
+      "Fig's favorite food is what?",
+
+    answers: [
+      "Cake",
+      "Tuna"
+    ],
+
+    correct: 1
+  },
+
+  {
+    question:
+      "Which memory should you DEFINITELY not mess with?",
+
+    answers: [
+      "The receipts",
+      "The cracked phone",
+      "The bunny",
+      "The chalk"
+    ],
+
+    correct: 2
+  }
+];
+
+const obstacleTypes = [
+  "box",
+  "coffee",
+  "phone",
+  "fish",
+  "box"
+];
+
+const heartsEl =
+  document.getElementById(
+    "panic-hearts"
+  );
+
+const scoreEl =
+  document.getElementById(
+    "panic-score"
+  );
+
+const quizCard =
+  document.getElementById(
+    "quiz-card"
+  );
+
+const quizNumber =
+  document.getElementById(
+    "quiz-number"
+  );
+
+const quizQuestion =
+  document.getElementById(
+    "quiz-question"
+  );
+
+const quizAnswers =
+  document.getElementById(
+    "quiz-answers"
+  );
+
+const quizTime =
+  document.getElementById(
+    "quiz-time"
+  );
+
+const timerFill =
+  document.getElementById(
+    "timer-fill"
+  );
+
+const flash =
+  document.getElementById(
+    "panic-flash"
+  );
+
+const panicComment =
+  document.getElementById(
+    "panic-fig-comment"
+  );
+
+let quizTimer = null;
+let quizDeadline = 0;
+
+/* HUD */
+
+function updateHUD() {
+
+  let hearts = "";
+
+  for (
+    let i = 0;
+    i < 3;
+    i++
+  ) {
+
+    hearts +=
+      i < game.lives
+        ? "♥ "
+        : "♡ ";
+  }
+
+  heartsEl.textContent =
+    hearts.trim();
+
+  scoreEl.textContent =
+    game.score;
+}
+
+/* START */
+
+function startPanic() {
+
+  document.getElementById(
+    "panic-start"
+  ).hidden = true;
+
+  document.getElementById(
+    "panic-result"
+  ).hidden = true;
+
+  quizCard.hidden = true;
+
+  game.started = true;
+  game.phase = "approach";
+
+  game.lives = 3;
+  game.score = 0;
+  game.question = 0;
+
+  game.obstacleX =
+    canvas.width + 100;
+
+  panicComment.textContent =
+    'FIG: “Try not to get me killed.”';
+
+  updateHUD();
+}
+
+document.getElementById(
+  "start-panic"
+).addEventListener(
+  "click",
+  startPanic
+);
+
+document.getElementById(
+  "restart-panic"
+).addEventListener(
+  "click",
+  startPanic
+);
+
+/* QUESTION */
+
+function showQuestion() {
+
+  game.phase = "quiz";
+
+  const q =
+    questions[
+      game.question
+    ];
+
+  quizNumber.textContent =
+    `QUESTION ${game.question + 1}/5`;
+
+  quizQuestion.textContent =
+    q.question;
+
+  quizAnswers.innerHTML = "";
+
+  q.answers.forEach(
+    (answer, index) => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "answer";
+
+      button.type =
+        "button";
+
+      button.innerHTML =
+        `<span>${index + 1}.</span>${answer}`;
+
+      button.addEventListener(
+        "click",
+        () => answerQuestion(index)
+      );
+
+      quizAnswers.appendChild(
+        button
+      );
+    }
+  );
+
+  quizCard.hidden = false;
+
+  quizDeadline =
+    performance.now() +
+    10000;
+
+  clearInterval(
+    quizTimer
+  );
+
+  quizTimer =
+    setInterval(
+      updateQuizTimer,
+      80
+    );
+
+  updateQuizTimer();
+}
+
+function updateQuizTimer() {
+
+  const remaining =
+    Math.max(
+      0,
+      quizDeadline -
+      performance.now()
+    );
+
+  const seconds =
+    remaining / 1000;
+
+  quizTime.textContent =
+    seconds.toFixed(1);
+
+  timerFill.style.width =
+    (
+      remaining /
+      10000 *
+      100
+    ) + "%";
+
+  if (remaining <= 0) {
+
+    clearInterval(
+      quizTimer
+    );
+
+    answerQuestion(-1);
+  }
+}
+
+/* ANSWER */
+
+function answerQuestion(index) {
+
+  if (
+    game.phase !== "quiz"
+  ) {
+    return;
+  }
+
+  clearInterval(
+    quizTimer
+  );
+
+  quizCard.hidden = true;
+
+  const q =
+    questions[
+      game.question
+    ];
+
+  if (index === q.correct) {
+
+    game.score++;
+
+    game.phase = "jump";
+
+    game.jumpStart =
+      performance.now();
+
+    showFlash(
+      "CORRECT — FIG JUMPS!"
+    );
+
+    panicComment.textContent =
+      'FIG: “Obviously.”';
+
+  } else {
+
+    game.lives--;
+
+    game.phase = "crash";
+
+    game.crashStart =
+      performance.now();
+
+    showFlash(
+      index === -1
+        ? "TOO SLOW!"
+        : "WRONG!"
+    );
+
+    panicComment.textContent =
+      game.lives > 0
+        ? 'FIG: “Were you even PAYING ATTENTION?”'
+        : 'FIG: “Great. You killed me. Fantastic.”';
+  }
+
+  updateHUD();
+}
+
+function showFlash(text) {
+
+  flash.textContent =
+    text;
+
+  flash.style.opacity =
+    "1";
+
+  setTimeout(
+    () => {
+
+      flash.style.opacity =
+        "0";
+
+    },
+    900
+  );
+}
+
+/* NEXT QUESTION */
+
+function advanceGame() {
+
+  game.question++;
+
+  if (
+    game.lives <= 0 ||
+    game.question >=
+      questions.length
+  ) {
+
+    finishPanic();
+
+    return;
+  }
+
+  game.obstacleX =
+    canvas.width + 100;
+
+  game.phase =
+    "approach";
+}
+
+/* FINISH */
+
+function finishPanic() {
+
+  game.started = false;
+  game.phase = "finished";
+
+  quizCard.hidden = true;
+
+  const result =
+    document.getElementById(
+      "panic-result"
+    );
+
+  const title =
+    document.getElementById(
+      "result-title"
+    );
+
+  const message =
+    document.getElementById(
+      "result-message"
+    );
+
+  result.hidden = false;
+
+  if (
+    game.lives <= 0
+  ) {
+
+    title.textContent =
+      "FIG DIED.";
+
+    message.textContent =
+      `You got ${game.score}/5 before Fig lost all three lives. Fig would like you to leave.`;
+
+    return;
+  }
+
+  title.textContent =
+    `${game.score}/5`;
+
+  if (game.score === 5) {
+
+    message.textContent =
+      "YOU ACTUALLY KNOW ME. WEIRD.";
+
+  } else if (
+    game.score >= 3
+  ) {
+
+    message.textContent =
+      "ACCEPTABLE. BARELY.";
+
+  } else if (
+    game.score >= 1
+  ) {
+
+    message.textContent =
+      "DID YOU JUST GET HERE?";
+
+  } else {
+
+    message.textContent =
+      "GET OUT OF MY ROOM.";
+  }
+}
+
+/* =========================================================
+   PIXEL ART DRAWING
+========================================================= */
+
+function pixelRect(
+  x,
+  y,
+  w,
+  h,
+  color
+) {
+
+  ctx.fillStyle =
+    color;
+
+  ctx.fillRect(
+    Math.round(x),
+    Math.round(y),
+    w,
+    h
+  );
+}
+
+/* FIG SPRITE */
+
+function drawPixelFig(
+  x,
+  ground,
+  time
+) {
+
+  let jump = 0;
+
+  if (
+    game.phase === "jump"
+  ) {
+
+    const elapsed =
+      performance.now() -
+      game.jumpStart;
+
+    const progress =
+      Math.min(
+        1,
+        elapsed / 850
+      );
+
+    jump =
+      Math.sin(
+        progress *
+        Math.PI
+      ) * 165;
+  }
+
+  let tilt = 0;
+
+  if (
+    game.phase === "crash"
+  ) {
+    tilt = 15;
+  }
+
+  const y =
+    ground -
+    104 -
+    jump;
+
+  ctx.save();
+
+  ctx.translate(
+    x + 54,
+    y + 54
+  );
+
+  ctx.rotate(
+    tilt *
+    Math.PI /
+    180
+  );
+
+  ctx.translate(
+    -54,
+    -54
+  );
+
+  /* ears */
+
+  pixelRect(
+    16,
+    0,
+    24,
+    25,
+    "#f4f0e8"
+  );
+
+  pixelRect(
+    69,
+    0,
+    24,
+    25,
+    "#f4f0e8"
+  );
+
+  /* head */
+
+  pixelRect(
+    8,
+    17,
+    94,
+    62,
+    "#f4f0e8"
+  );
+
+  pixelRect(
+    0,
+    31,
+    110,
+    38,
+    "#f4f0e8"
+  );
+
+  /* eyes */
+
+  pixelRect(
+    25,
+    49,
+    25,
+    5,
+    "#111"
+  );
+
+  pixelRect(
+    65,
+    49,
+    25,
+    5,
+    "#111"
+  );
+
+  /* cheeks */
+
+  pixelRect(
+    18,
+    58,
+    20,
+    8,
+    "#efb9b6"
+  );
+
+  pixelRect(
+    76,
+    58,
+    20,
+    8,
+    "#efb9b6"
+  );
+
+  /* nose */
+
+  pixelRect(
+    54,
+    57,
+    5,
+    5,
+    "#111"
+  );
+
+  /* body */
+
+  pixelRect(
+    39,
+    76,
+    37,
+    38,
+    "#f4f0e8"
+  );
+
+  /* arms */
+
+  pixelRect(
+    28,
+    83,
+    14,
+    24,
+    "#f4f0e8"
+  );
+
+  pixelRect(
+    73,
+    83,
+    14,
+    24,
+    "#f4f0e8"
+  );
+
+  /* running legs */
+
+  const runFrame =
+    Math.floor(
+      time / 120
+    ) % 2;
+
+  if (runFrame === 0) {
+
+    pixelRect(
+      41,
+      108,
+      13,
+      14,
+      "#f4f0e8"
+    );
+
+    pixelRect(
+      67,
+      106,
+      13,
+      17,
+      "#f4f0e8"
+    );
+
+  } else {
+
+    pixelRect(
+      41,
+      105,
+      13,
+      18,
+      "#f4f0e8"
+    );
+
+    pixelRect(
+      67,
+      109,
+      13,
+      13,
+      "#f4f0e8"
+    );
+  }
+
+  ctx.restore();
+}
+
+/* OBSTACLES */
+
+function drawObstacle(
+  type,
+  x,
+  ground
+) {
+
+  if (type === "coffee") {
+
+    pixelRect(
+      x,
+      ground - 69,
+      67,
+      58,
+      "#eee4cf"
+    );
+
+    pixelRect(
+      x + 10,
+      ground - 58,
+      47,
+      38,
+      "#754325"
+    );
+
+    ctx.strokeStyle =
+      "#111";
+
+    ctx.lineWidth = 5;
+
+    ctx.strokeRect(
+      x,
+      ground - 69,
+      67,
+      58
+    );
+
+    ctx.strokeRect(
+      x + 64,
+      ground - 58,
+      25,
+      31
+    );
+
+    return;
+  }
+
+  if (type === "phone") {
+
+    pixelRect(
+      x,
+      ground - 94,
+      57,
+      84,
+      "#30483a"
+    );
+
+    pixelRect(
+      x + 8,
+      ground - 83,
+      40,
+      52,
+      "#111"
+    );
+
+    pixelRect(
+      x + 22,
+      ground - 22,
+      12,
+      5,
+      "#ddd"
+    );
+
+    return;
+  }
+
+  if (type === "fish") {
+
+    pixelRect(
+      x,
+      ground - 48,
+      86,
+      40,
+      "#b69b54"
+    );
+
+    pixelRect(
+      x + 8,
+      ground - 40,
+      69,
+      25,
+      "#8d7b48"
+    );
+
+    pixelRect(
+      x + 5,
+      ground - 45,
+      8,
+      8,
+      "#111"
+    );
+
+    return;
+  }
+
+  /* box */
+
+  pixelRect(
+    x,
+    ground - 70,
+    76,
+    62,
+    "#9b6436"
+  );
+
+  pixelRect(
+    x + 7,
+    ground - 62,
+    62,
+    47,
+    "#b8783d"
+  );
+
+  ctx.strokeStyle =
+    "#111";
+
+  ctx.lineWidth = 5;
+
+  ctx.strokeRect(
+    x,
+    ground - 70,
+    76,
+    62
+  );
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    x + 9,
+    ground - 60
+  );
+
+  ctx.lineTo(
+    x + 67,
+    ground - 16
+  );
+
+  ctx.moveTo(
+    x + 67,
+    ground - 60
+  );
+
+  ctx.lineTo(
+    x + 9,
+    ground - 16
+  );
+
+  ctx.stroke();
+}
+
+/* BACKGROUND */
+
+function drawGame(time) {
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  const ground =
+    422;
+
+  /* little clouds */
+
+  ctx.fillStyle =
+    "#ded8c6";
+
+  const cloudMove =
+    (
+      time *
+      0.025
+    ) %
+    canvas.width;
+
+  for (
+    let i = -1;
+    i < 4;
+    i++
+  ) {
+
+    const x =
+      i * 470 -
+      cloudMove +
+      canvas.width;
+
+    pixelRect(
+      x,
+      85,
+      80,
+      14,
+      "#ded8c6"
+    );
+
+    pixelRect(
+      x + 17,
+      72,
+      41,
+      18,
+      "#ded8c6"
+    );
+  }
+
+  /* floor */
+
+  pixelRect(
+    0,
+    ground,
+    canvas.width,
+    7,
+    "#111"
+  );
+
+  /* moving ground marks */
+
+  const groundMove =
+    (
+      time *
+      .18
+    ) % 120;
+
+  for (
+    let x =
+      -groundMove;
+    x <
+      canvas.width;
+    x += 120
+  ) {
+
+    pixelRect(
+      x,
+      ground + 28,
+      56,
+      5,
+      "#111"
+    );
+  }
+
+  drawPixelFig(
+    135,
+    ground,
+    time
+  );
+
+  if (
+    game.started &&
+    game.question <
+      obstacleTypes.length
+  ) {
+
+    drawObstacle(
+      obstacleTypes[
+        game.question
+      ],
+      game.obstacleX,
+      ground
+    );
+  }
+}
+
+/* =========================================================
+   GAME LOOP
+========================================================= */
+
+function gameLoop(time) {
+
+  const dt =
+    Math.min(
+      32,
+      time -
+      game.lastTime
+    );
+
+  game.lastTime =
+    time;
+
+  if (
+    game.started &&
+    game.phase ===
+      "approach"
+  ) {
+
+    game.obstacleX -=
+      game.speed *
+      (
+        dt / 16
+      );
+
+    if (
+      game.obstacleX <
+      710
+    ) {
+
+      showQuestion();
+    }
+  }
+
+  if (
+    game.started &&
+    game.phase === "jump"
+  ) {
+
+    game.obstacleX -=
+      16 *
+      (
+        dt / 16
+      );
+
+    if (
+      time -
+      game.jumpStart >
+      900
+    ) {
+
+      advanceGame();
+    }
+  }
+
+  if (
+    game.started &&
+    game.phase === "crash"
+  ) {
+
+    if (
+      time -
+      game.crashStart >
+      850
+    ) {
+
+      advanceGame();
+    }
+  }
+
+  drawGame(time);
+
+  requestAnimationFrame(
+    gameLoop
+  );
+}
+
+requestAnimationFrame(
+  gameLoop
+);
+
+/* ESCAPE */
+
+window.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key !== "Escape"
+    ) {
+      return;
+    }
+
+    if (
+      !memoryCard.hidden
+    ) {
+
+      closeMemoryCard();
+
+    } else if (boxOpen) {
+
+      setBoxState(false);
+    }
+  }
+);
+
+</script>
+</body>
+</html>
